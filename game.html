@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .contain{
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>choose the thing</h1>
+        <button onclick="showball()">ball</button>
+        <button onclick="showball()">bat</button>
+       
+        <button onclick="showball()">stump</button>
+        <div class="contain">
+        <div class="win">win<h id="win">0</h></div>
+        <div class="win">lose<h id="ties">0</h></div>
+        <div class="win">ties<h id="lose">0</h></div>
+       
+        </div>
+    </div>
+    <script>
+        let score={
+            win:0,
+            lose:0,
+            ties:0
+        };
+    function showball(){
+        let computer;
+       
+        let randam=Math.random()*3;
+        if(randam>0 && randam<=1){
+             computer='ball';
+        
+        }else if(randam>1 && randam<=2){
+             computer='bat';
+         
+        }else{
+             computer='stump';
+          
+        }
+        let result;
+        if(computer==='bat'){
+          result='ties';
+          score.ties++;
+        }else if(computer==='ball'){
+           result='user won';
+           score.win++;
+        }else{
+           result='computer won';
+           score.lose++;
+        }
+        alert(` you choose ball .computer choose ${computer},${result},`)
+        console.log(score);
+        let win=document.getElementById('win');
+        let lose=document.getElementById('lose');
+        let ties=document.getElementById('ties');
+        win.innerText=score.win;
+        lose.innerText=score.lose;
+        ties.innerText=score.ties;
+    }
+    </script>
+</body>
+</html>
